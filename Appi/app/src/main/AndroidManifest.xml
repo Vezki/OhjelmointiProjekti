@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KoskaIstutan">
         <activity
+            android:name=".AlueValinta"
+            android:exported="false" />
+        <activity
             android:name=".KasviValinta"
             android:exported="false" />
         <activity
