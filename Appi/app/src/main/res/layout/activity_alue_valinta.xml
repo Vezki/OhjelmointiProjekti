@@ -38,12 +38,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/kasvuvyohyke" />
 
-        <Button
-            android:id="@+id/btnEteenpain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            tools:layout_editor_absoluteX="284dp"
-            tools:layout_editor_absoluteY="552dp" />
+
+        <ImageButton
+            android:id="@+id/btnNuoli"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/pyorea_nappi_bg"
+            app:srcCompat="@drawable/ic_arrow_right_foreground"
+            tools:layout_editor_absoluteX="315dp"
+            tools:layout_editor_absoluteY="547dp" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
