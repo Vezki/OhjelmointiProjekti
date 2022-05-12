@@ -31,7 +31,7 @@ public class AlueValinta extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(AlueValinta.this, KasviValinta.class));
-                finish();
+                String item = cmbAlueValinta.getSelectedItem().toString();
             }
         });
 
