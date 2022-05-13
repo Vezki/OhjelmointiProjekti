@@ -2,8 +2,12 @@ package com.plantsit.koskaistutan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 public class AlueValinta extends AppCompatActivity {
@@ -19,6 +23,19 @@ public class AlueValinta extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, alueet);
         cmbAlueValinta.setAdapter(adapter);
         /* Simppeli kovakoodaus comboboksille */
+
+
+        ImageButton btnNuoli = findViewById(R.id.btnNuoli);
+
+        btnNuoli.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AlueValinta.this, KasviValinta.class));
+                String item = cmbAlueValinta.getSelectedItem().toString();
+            }
+        });
+
+
 
     }
 }
