@@ -1,4 +1,5 @@
-[
+{
+"kasvit": [
     {
         "kasvi": "Tomaatti",
         "aikaisintaan": 1.1,
@@ -84,3 +85,4 @@
         "tyyli": "suorakylvö"
     }
 ]
+}
