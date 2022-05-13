@@ -3,10 +3,13 @@ package com.plantsit.koskaistutan;
 public class plants {
 
     private static String kasvi;
+
+    public plants(String kasvi) {
+    }
     // private final String aikaisintaan;
 
-    public plants(String name) {
-        this.kasvi = name;
+    public void kasvit(String kasvi) {
+        this.kasvi = kasvi;
         // this.aikaisintaan = date;
     }
 
