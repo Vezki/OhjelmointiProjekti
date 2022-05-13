@@ -1,10 +1,11 @@
 package com.plantsit.koskaistutan;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,63 +16,85 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 public class KasviValinta extends AppCompatActivity {
 
-    ArrayList<String> kasviNimet = new ArrayList<>();
-    ArrayList<String> aikaisintaanAjat = new ArrayList<>();
-    ArrayList<String> viimeistaanAjat = new ArrayList<>();
-    ArrayList<String> istutusTyyli = new ArrayList<>();
+    private RecyclerView mRecyclerView;
+    private List<Object> viewItems = new ArrayList<>();
 
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
-    /*JSONista hakemiseen kaytetty pohjana koodia taalta Example 2 https://abhiandroid.com/programming/json*/
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kasvi_valinta);
+        setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
 
-        try{
-            JSONObject obj = new JSONObject(loadJSONFromRaw());
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
 
-            JSONArray kasvitArray = obj.getJSONArray("Kasvit");
-            for (int i = 0; i < kasvitArray.length(); i++){
-                JSONObject kasvitDetail = kasvitArray.getJSONObject(i);
-                kasviNimet.add(kasvitDetail.getString("kasvi"));
-                aikaisintaanAjat.add(kasvitDetail.getString("aikaisintaan"));
-                viimeistaanAjat.add(kasvitDetail.getString("viimeistaan"));
-                istutusTyyli.add(kasvitDetail.getString("viimeistaan"));
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
+
+        // specify an adapter (see also next example)
+        mAdapter = new recycleradapter(this, viewItems);
+        mRecyclerView.setAdapter(mAdapter);
+
+        addItemsFromJSON();
 
     }
 
-
-
-
-    public String loadJSONFromRaw() {
-        String json = null;
+    private void addItemsFromJSON() {
         try {
-            InputStream is = getResources().openRawResource(R.raw.plants);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
+
+            String jsonDataString = readJSONDataFromFile();
+            JSONArray jsonArray = new JSONArray(jsonDataString);
+
+            for (int i=0; i<jsonArray.length(); ++i) {
+
+                JSONObject itemObj = jsonArray.getJSONObject(i);
+
+                String kasvi = itemObj.getString("kasvi");
+                //String aikaisintaan = itemObj.getString("aikaisintaan");
+
+                plants Plants = new plants(kasvi);
+                viewItems.add(Plants);
+            }
+
+        } catch (JSONException | IOException e) {
+            Log.d(TAG, "addItemsFromJSON: ", e);
         }
-        return json;
     }
 
+    private String readJSONDataFromFile() throws IOException{
 
+        InputStream inputStream = null;
+        StringBuilder builder = new StringBuilder();
 
+        try {
+
+            String jsonString = null;
+            inputStream = getResources().openRawResource(R.raw.plants);
+            BufferedReader bufferedReader = new BufferedReader(
+                    new InputStreamReader(inputStream, "UTF-8"));
+
+            while ((jsonString = bufferedReader.readLine()) != null) {
+                builder.append(jsonString);
+            }
+
+        } finally {
+            if (inputStream != null) {
+                inputStream.close();
+            }
+        }
+        return new String(builder);
+    }
 }
