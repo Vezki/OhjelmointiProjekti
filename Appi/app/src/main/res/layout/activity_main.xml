@@ -6,6 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="horizontal">
-    
+
+    <Button
+        android:id="@+id/aluevalintaBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Valitse alue" />
+
+    <Button
+        android:id="@+id/kasvivalintaBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Valitse kasvit" />
+
+    <Button
+        android:id="@+id/mainBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Tarkastele istutusaikoja" />
+
 
 </LinearLayout>

@@ -20,7 +20,7 @@ public class AlueValinta extends AppCompatActivity {
         Spinner cmbAlueValinta = (Spinner) findViewById(R.id.cmbAlueValinta);
 
         String[] alueet = new String[] {"Ia","Ib", "II","III","IV","IV/V", "V", "V/VI", "VI", "VI/VII", "VII", "VIII"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, alueet);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, alueet);
         cmbAlueValinta.setAdapter(adapter);
         /* Simppeli kovakoodaus comboboksille */
 
@@ -34,8 +34,6 @@ public class AlueValinta extends AppCompatActivity {
                 String item = cmbAlueValinta.getSelectedItem().toString();
             }
         });
-
-
 
     }
 }
