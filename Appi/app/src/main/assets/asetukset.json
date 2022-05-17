@@ -1,6 +1,10 @@
-[
-	{
-	   "alue": "III",
-	   "kasvit": ["Tomaatti, Chili"]
-	}
-]
+{
+	"lista": [
+		{
+			"alue": "III",
+			"kasvit": [
+				"Tomaatti, Chili"
+			]
+		}
+	]
+}
