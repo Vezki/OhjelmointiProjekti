@@ -4,11 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class AlueValinta extends AppCompatActivity {
 
@@ -31,9 +38,44 @@ public class AlueValinta extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(AlueValinta.this, KasviValinta.class));
-                String item = cmbAlueValinta.getSelectedItem().toString();
+                String comboItem = cmbAlueValinta.getSelectedItem().toString();
+
+            try{
+
+                JSONObject obj = new JSONObject(loadJSONfromAssets());
+
+                JSONArray asetuksetArray = obj.getJSONArray("lista");
+
+                JSONObject asetuksetTieto = asetuksetArray.getJSONObject(0);
+                asetuksetTieto.put("alue", comboItem);
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
             }
         });
+
+    }
+
+    private String loadJSONfromAssets() {
+        String json = null;
+
+        try {
+            InputStream is = getAssets().open("asetukset.json");
+            int size = is.available();
+
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+
+            json = new String(buffer, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return json;
 
     }
 }
