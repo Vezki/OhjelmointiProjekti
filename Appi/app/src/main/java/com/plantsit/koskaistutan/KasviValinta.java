@@ -35,7 +35,7 @@ public class KasviValinta extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.my_recycler_view);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(KasviValinta.this.getApplicationContext())); //en tiedä toimiiko!
+        recyclerView.setLayoutManager(new LinearLayoutManager(KasviValinta.this.getApplicationContext()));
 
         try {
             JSONObject obj = new JSONObject(loadJSONfromAssets());
