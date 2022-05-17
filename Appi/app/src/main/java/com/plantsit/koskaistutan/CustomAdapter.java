@@ -2,6 +2,8 @@ package com.plantsit.koskaistutan;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder>
 {
     ArrayList<String> kasvinimi;
+    ArrayList<String> valitutKasvit = new ArrayList<>();
 
     Context ctx;
 
@@ -33,11 +36,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.kasvi.setText(kasvinimi.get(position));
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(ctx, kasvinimi.get(position), Toast.LENGTH_SHORT).show();
+            public void onClick(View vh) {
+                String tamanKasvinNimi = holder.kasvi.getText().toString();
+                if(valitutKasvit.contains(tamanKasvinNimi)){
+                    holder.kasvi.setBackgroundColor(Color.WHITE);
+                    valitutKasvit.remove(tamanKasvinNimi);
+                    Toast.makeText(ctx, valitutKasvit.toString(), Toast.LENGTH_SHORT).show();
+                }else{
+                    holder.kasvi.setBackgroundColor(Color.BLUE);
+                    valitutKasvit.add(tamanKasvinNimi);
+                    Toast.makeText(ctx, valitutKasvit.toString(), Toast.LENGTH_SHORT).show();
+                }
             }
         }
         );

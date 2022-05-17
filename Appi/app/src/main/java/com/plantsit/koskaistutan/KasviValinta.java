@@ -1,13 +1,18 @@
 package com.plantsit.koskaistutan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SyncStatusObserver;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,6 +59,8 @@ public class KasviValinta extends AppCompatActivity {
 
         CustomAdapter customAdapter = new CustomAdapter(kasvilista, KasviValinta.this);
         recyclerView.setAdapter(customAdapter);
+
+
     }
     private String loadJSONfromAssets() {
         String json = null;
