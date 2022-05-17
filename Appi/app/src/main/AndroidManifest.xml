@@ -16,6 +16,9 @@
             android:name=".KasviValinta"
             android:exported="false" />
         <activity
+            android:name=".IstutusAjat"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

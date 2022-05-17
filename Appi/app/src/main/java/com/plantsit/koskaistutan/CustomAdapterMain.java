@@ -1,5 +1,6 @@
 package com.plantsit.koskaistutan;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +39,7 @@ public class CustomAdapterMain extends RecyclerView.Adapter<CustomAdapterMain.My
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 
         holder.kasvit.setText(kasviNimet.get(position));
         holder.alue.setText(kasvuAlue.get(position));

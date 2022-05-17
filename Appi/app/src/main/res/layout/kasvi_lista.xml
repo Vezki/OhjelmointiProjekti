@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/kasviNimi"
+            android:id="@+id/kasvit"
             android:text="kasvit"
             android:textColor="@color/black"
             android:textSize="20sp"/>
@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/kasvuAlue"
+            android:id="@+id/alue"
             android:text="alue"
             android:textColor="@color/black"
             android:textSize="15sp"/>
