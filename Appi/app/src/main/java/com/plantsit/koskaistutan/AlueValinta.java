@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -48,6 +49,8 @@ public class AlueValinta extends AppCompatActivity {
 
                 JSONObject asetuksetTieto = asetuksetArray.getJSONObject(0);
                 asetuksetTieto.put("alue", comboItem);
+
+                Toast.makeText(getApplicationContext(), "Alue " + comboItem + " tallennettu", Toast.LENGTH_SHORT).show();
 
             }catch (Exception e){
                 e.printStackTrace();
