@@ -1,6 +1,7 @@
 package com.plantsit.koskaistutan;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -37,14 +38,18 @@ public class IstutusAjat extends AppCompatActivity {
 
             JSONArray listaArray = obj.getJSONArray("lista");
 
-            for (int i=0 ; i<listaArray.length() ; i++) {
 
-                JSONObject listaDetail = listaArray.getJSONObject(i);
+            JSONObject listaDetail = listaArray.getJSONObject(0);
 
-                kasviNimet.add(listaDetail.getString("kasvit"));
+            JSONArray kasvitArray = listaDetail.getJSONArray("kasvit");
+
+
+            for (int i = 0; i < kasvitArray.length(); i++) {
+                kasviNimet.add(kasvitArray.getString(i));
                 kasvuAlue.add(listaDetail.getString("alue"));
-
             }
+
+
 
         } catch (JSONException e) {
             e.printStackTrace();
