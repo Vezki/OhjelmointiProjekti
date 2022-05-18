@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -60,25 +61,95 @@ public class KasviValinta extends AppCompatActivity {
         CustomAdapter customAdapter = new CustomAdapter(kasvilista, KasviValinta.this);
         recyclerView.setAdapter(customAdapter);
 
+        Button btnTallenna = findViewById(R.id.btnTallenna);
 
+        btnTallenna.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(KasviValinta.this, IstutusAjat.class));
+                String chosenOnes = customAdapter.valitutKasvit.toString();
+
+                try{
+
+                    JSONObject obj = new JSONObject(loadJSONfromAssetsTwo());
+
+                    JSONArray valitutArray = obj.getJSONArray("lista");
+
+                    JSONObject asetuksiinTieto = valitutArray.getJSONObject(0);
+                    asetuksiinTieto.put("kasvit", chosenOnes);
+
+                    Toast.makeText(getApplicationContext(), "Kasvit " + chosenOnes + " tallennettu", Toast.LENGTH_SHORT).show();
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+        /*Button btnTarkista = findViewById(R.id.btnTarkista);
+        ArrayList<String> kasvilistaa = new ArrayList<>();
+
+        btnTarkista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                try {
+                    JSONObject obj = new JSONObject(loadJSONfromAssetsTwo());
+
+                    JSONArray kasviiArray = obj.getJSONArray("lista");
+
+                    for (int i = 0; i < kasviiArray.length(); i++) {
+                        JSONObject kasvitietoaa = kasviiArray.getJSONObject(i);
+
+                        kasvilistaa.add(kasvitietoaa.getString("kasvit"));
+                    }
+                    Toast.makeText(getApplicationContext(), "Kasvit " + kasvilistaa, Toast.LENGTH_SHORT).show();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }});*/
     }
-    private String loadJSONfromAssets() {
-        String json = null;
 
-        try {
-            InputStream is = getAssets().open("plants.json");
-            int size = is.available();
+            private String loadJSONfromAssets() {
+                String json = null;
 
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
+                try {
+                    InputStream is = getAssets().open("plants.json");
+                    int size = is.available();
 
-            json = new String(buffer, "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+                    byte[] buffer = new byte[size];
+                    is.read(buffer);
+                    is.close();
+
+                    json = new String(buffer, "UTF-8");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+
+                return json;
+            }
+
+            private String loadJSONfromAssetsTwo() {
+                String json = null;
+
+                try {
+                    InputStream is = getAssets().open("asetukset.json");
+                    int size = is.available();
+
+                    byte[] buffer = new byte[size];
+                    is.read(buffer);
+                    is.close();
+
+                    json = new String(buffer, "UTF-8");
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+
+                return json;
+            }
         }
-
-        return json;
-    }
-}

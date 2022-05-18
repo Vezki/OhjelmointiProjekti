@@ -43,12 +43,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 if(valitutKasvit.contains(tamanKasvinNimi)){
                     holder.kasvi.setBackgroundColor(Color.WHITE);
                     valitutKasvit.remove(tamanKasvinNimi);
-                    Toast.makeText(ctx, valitutKasvit.toString(), Toast.LENGTH_SHORT).show();
                 }else{
                     holder.kasvi.setBackgroundColor(Color.BLUE);
                     valitutKasvit.add(tamanKasvinNimi);
-                    Toast.makeText(ctx, valitutKasvit.toString(), Toast.LENGTH_SHORT).show();
                 }
+                Toast.makeText(ctx, valitutKasvit.toString(), Toast.LENGTH_SHORT).show();
             }
         }
         );

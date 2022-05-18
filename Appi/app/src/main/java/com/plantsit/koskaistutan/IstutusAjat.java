@@ -49,15 +49,12 @@ public class IstutusAjat extends AppCompatActivity {
                 kasvuAlue.add(listaDetail.getString("alue"));
             }
 
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         CustomAdapterMain customAdapterMain = new CustomAdapterMain( kasviNimet, kasvuAlue, IstutusAjat.this);
         recyclerView.setAdapter(customAdapterMain);
-
     }
 
     private String loadJSONfromAssets() {
