@@ -61,7 +61,7 @@ public class KasviValinta extends AppCompatActivity {
         CustomAdapter customAdapter = new CustomAdapter(kasvilista, KasviValinta.this);
         recyclerView.setAdapter(customAdapter);
 
-        Button btnTallenna = findViewById(R.id.btnTallenna);
+        ImageButton btnTallenna = findViewById(R.id.btnTallenna);
 
         btnTallenna.setOnClickListener(new View.OnClickListener(){
             @Override
