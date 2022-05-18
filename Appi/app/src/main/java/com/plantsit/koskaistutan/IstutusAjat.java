@@ -47,6 +47,57 @@ public class IstutusAjat extends AppCompatActivity {
 
 
 
+        /*    switch(tähän alue)
+            {
+                case: "Ia":
+                    aikaisintaan = aikaisintaan;
+                    viimeistään = viimeistään;
+                    break;
+                case: "Ib":
+                    aikaisintaan = aikaisintaan.plusdays(3);
+                    viimeistään = viimeistään.plusdays(3);
+                    break;
+                case: "II":
+                    aikaisintaan = aikaisintaan.plusdays(7);
+                    viimeistään = viimeistään.plusdays(7);
+                    break;
+                case: "III":
+                    aikaisintaan = aikaisintaan.plusdays(11);
+                    viimeistään = viimeistään.plusdays(11);
+                    break;
+                case: "IV":
+                    aikaisintaan = aikaisintaan.plusdays(15);
+                    viimeistään = viimeistään.plusdays(15);
+                    break;
+                case: "IV/V":
+                    aikaisintaan = aikaisintaan.plusdays(18);
+                    viimeistään = viimeistään.plusdays(18);
+                    break;
+                case: "V":
+                    aikaisintaan = aikaisintaan.plusdays(21);
+                    viimeistään = viimeistään.plusdays(21);
+                    break;
+                case: "V/VI":
+                    aikaisintaan = aikaisintaan.plusdays(24);
+                    viimeistään = viimeistään.plusdays(24);
+                    break;
+                case: "VI":
+                    aikaisintaan = aikaisintaan.plusdays(27);
+                    viimeistään = viimeistään.plusdays(27);
+                    break;
+                case: "VI/VII":
+                    aikaisintaan = aikaisintaan.plusdays(30);
+                    viimeistään = viimeistään.plusdays(30);
+                    break;
+                case: "VII":
+                    aikaisintaan = aikaisintaan.plusdays(33);
+                    viimeistään = viimeistään.plusdays(33);
+                    break;
+                case: "VIII":
+                    aikaisintaan = aikaisintaan.plusdays(37);
+                    viimeistään = viimeistään.plusdays(37);
+                    break;
+            } */
 
 
             for (int i = 0; i < kasvitAsetuksetArray.length(); i++) {

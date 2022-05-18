@@ -66,7 +66,7 @@ public class KasviValinta extends AppCompatActivity {
         btnTallenna.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(KasviValinta.this, IstutusAjat.class));
+                //startActivity(new Intent(KasviValinta.this, IstutusAjat.class));
                 String chosenOnes = customAdapter.valitutKasvit.toString();
 
                 try{
@@ -87,7 +87,7 @@ public class KasviValinta extends AppCompatActivity {
             }
         });
 
-        /*Button btnTarkista = findViewById(R.id.btnTarkista);
+        Button btnTarkista = findViewById(R.id.btnTarkista);
         ArrayList<String> kasvilistaa = new ArrayList<>();
 
         btnTarkista.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +109,7 @@ public class KasviValinta extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-            }});*/
+            }});
     }
 
             private String loadJSONfromAssets() {
