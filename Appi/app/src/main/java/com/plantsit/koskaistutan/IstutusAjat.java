@@ -59,6 +59,7 @@ public class IstutusAjat extends AppCompatActivity {
                    if(kasvinNimiObjektissa.equals(tamanKasvinNimi)){
                        aIstutusAika.add(kasvitPlantsDetail.get("aikaisintaan").toString());
                        vIstutusAika.add(kasvitPlantsDetail.get("viimeistaan").toString());
+                       istutusTapa.add(kasvitPlantsDetail.get("tyyli").toString());
                     }
                 }
             }
@@ -67,7 +68,7 @@ public class IstutusAjat extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        CustomAdapterMain customAdapterMain = new CustomAdapterMain(kasviNimet, kasvuAlue, aIstutusAika, vIstutusAika, IstutusAjat.this);
+        CustomAdapterMain customAdapterMain = new CustomAdapterMain(kasviNimet, kasvuAlue, aIstutusAika, vIstutusAika, istutusTapa, IstutusAjat.this);
         recyclerView.setAdapter(customAdapterMain);
     }
 

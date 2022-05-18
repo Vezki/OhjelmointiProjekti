@@ -17,15 +17,17 @@ public class CustomAdapterMain extends RecyclerView.Adapter<CustomAdapterMain.My
 
     ArrayList<String> kasviNimet;
     ArrayList<String> kasvuAlue;
+    ArrayList<String> istutusTapa;
     ArrayList<String> aIstutusAika;
     ArrayList<String> vIstutusAika;
 
     Context ctx;
 
-    public CustomAdapterMain(ArrayList<String> kasviNimet, ArrayList<String> kasvuAlue, ArrayList<String> aIstutusAika, ArrayList<String> vIstutusAika, Context ctx) {
+    public CustomAdapterMain(ArrayList<String> kasviNimet, ArrayList<String> kasvuAlue, ArrayList<String> aIstutusAika, ArrayList<String> vIstutusAika, ArrayList<String> istutusTapa, Context ctx) {
 
         this.kasviNimet = kasviNimet;
         this.kasvuAlue = kasvuAlue;
+        this.istutusTapa = istutusTapa;
         this.aIstutusAika = aIstutusAika;
         this.vIstutusAika = vIstutusAika;
         this.ctx = ctx;
@@ -49,6 +51,7 @@ public class CustomAdapterMain extends RecyclerView.Adapter<CustomAdapterMain.My
 
         holder.kasvit.setText(kasviNimet.get(position));
         holder.alue.setText(kasvuAlue.get(position));
+        holder.tapa.setText("Tapa: " + istutusTapa.get(position));
         holder.aika.setText("Aikaisintaan: " + aIstutusAika.get(position) + " Viimeistään: " + vIstutusAika.get(position));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -69,13 +72,14 @@ public class CustomAdapterMain extends RecyclerView.Adapter<CustomAdapterMain.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView kasvit, alue, aika;
+        TextView kasvit, alue, tapa, aika;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             kasvit = itemView.findViewById(R.id.kasvit);
             alue = itemView.findViewById(R.id.alue);
+            tapa = itemView.findViewById(R.id.tapa);
             aika = itemView.findViewById(R.id.aika);
 
         }
