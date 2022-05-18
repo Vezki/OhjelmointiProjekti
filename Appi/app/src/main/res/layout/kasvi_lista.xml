@@ -28,6 +28,22 @@
             android:textColor="@color/black"
             android:textSize="15sp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tapa"
+            android:text="tapa"
+            android:textColor="@color/black"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/aika"
+            android:text="istutusaika"
+            android:textColor="@color/black"
+            android:textSize="15sp"/>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

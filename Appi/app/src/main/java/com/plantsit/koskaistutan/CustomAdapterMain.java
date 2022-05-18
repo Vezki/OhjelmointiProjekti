@@ -17,16 +17,22 @@ public class CustomAdapterMain extends RecyclerView.Adapter<CustomAdapterMain.My
 
     ArrayList<String> kasviNimet;
     ArrayList<String> kasvuAlue;
+    ArrayList<String> aIstutusAika;
+    ArrayList<String> vIstutusAika;
 
     Context ctx;
 
-    public CustomAdapterMain(ArrayList<String> kasviNimet, ArrayList<String> kasvuAlue, Context ctx) {
+    public CustomAdapterMain(ArrayList<String> kasviNimet, ArrayList<String> kasvuAlue, ArrayList<String> aIstutusAika, ArrayList<String> vIstutusAika, Context ctx) {
 
         this.kasviNimet = kasviNimet;
         this.kasvuAlue = kasvuAlue;
+        this.aIstutusAika = aIstutusAika;
+        this.vIstutusAika = vIstutusAika;
         this.ctx = ctx;
 
     }
+
+
 
     @NonNull
     @Override
@@ -43,6 +49,7 @@ public class CustomAdapterMain extends RecyclerView.Adapter<CustomAdapterMain.My
 
         holder.kasvit.setText(kasviNimet.get(position));
         holder.alue.setText(kasvuAlue.get(position));
+        holder.aika.setText("Aikaisintaan: " + aIstutusAika.get(position) + " Viimeistään: " + vIstutusAika.get(position));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,13 +69,14 @@ public class CustomAdapterMain extends RecyclerView.Adapter<CustomAdapterMain.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView kasvit, alue;
+        TextView kasvit, alue, aika;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             kasvit = itemView.findViewById(R.id.kasvit);
             alue = itemView.findViewById(R.id.alue);
+            aika = itemView.findViewById(R.id.aika);
 
         }
     }
