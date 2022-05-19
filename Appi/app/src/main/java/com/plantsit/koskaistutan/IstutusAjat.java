@@ -1,8 +1,11 @@
 package com.plantsit.koskaistutan;
 
+import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +17,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Array;
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class IstutusAjat extends AppCompatActivity {
@@ -26,6 +31,10 @@ public class IstutusAjat extends AppCompatActivity {
     ArrayList<String> aIstutusAika = new ArrayList<>();
     ArrayList<String> vIstutusAika = new ArrayList<>();
 
+    LocalDate aik;
+    LocalDate viim;
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,72 +54,79 @@ public class IstutusAjat extends AppCompatActivity {
             JSONObject objPlants = new JSONObject(loadJSONfromAssets("plants.json"));
             JSONArray kasvitPlantsArray = objPlants.getJSONArray("kasvit");
 
-
-
-        /*    switch(tähän alue)
-            {
-                case: "Ia":
-                    aikaisintaan = aikaisintaan;
-                    viimeistään = viimeistään;
-                    break;
-                case: "Ib":
-                    aikaisintaan = aikaisintaan.plusdays(3);
-                    viimeistään = viimeistään.plusdays(3);
-                    break;
-                case: "II":
-                    aikaisintaan = aikaisintaan.plusdays(7);
-                    viimeistään = viimeistään.plusdays(7);
-                    break;
-                case: "III":
-                    aikaisintaan = aikaisintaan.plusdays(11);
-                    viimeistään = viimeistään.plusdays(11);
-                    break;
-                case: "IV":
-                    aikaisintaan = aikaisintaan.plusdays(15);
-                    viimeistään = viimeistään.plusdays(15);
-                    break;
-                case: "IV/V":
-                    aikaisintaan = aikaisintaan.plusdays(18);
-                    viimeistään = viimeistään.plusdays(18);
-                    break;
-                case: "V":
-                    aikaisintaan = aikaisintaan.plusdays(21);
-                    viimeistään = viimeistään.plusdays(21);
-                    break;
-                case: "V/VI":
-                    aikaisintaan = aikaisintaan.plusdays(24);
-                    viimeistään = viimeistään.plusdays(24);
-                    break;
-                case: "VI":
-                    aikaisintaan = aikaisintaan.plusdays(27);
-                    viimeistään = viimeistään.plusdays(27);
-                    break;
-                case: "VI/VII":
-                    aikaisintaan = aikaisintaan.plusdays(30);
-                    viimeistään = viimeistään.plusdays(30);
-                    break;
-                case: "VII":
-                    aikaisintaan = aikaisintaan.plusdays(33);
-                    viimeistään = viimeistään.plusdays(33);
-                    break;
-                case: "VIII":
-                    aikaisintaan = aikaisintaan.plusdays(37);
-                    viimeistään = viimeistään.plusdays(37);
-                    break;
-            } */
-
-
             for (int i = 0; i < kasvitAsetuksetArray.length(); i++) {
                 String tamanKasvinNimi = kasvitAsetuksetArray.getString(i);
                 kasviNimet.add(tamanKasvinNimi);
+                String KasvuAlueenNro = listaDetail.getString("alue");
                 kasvuAlue.add(listaDetail.getString("alue"));
                 for(int y = 0; y < kasvitPlantsArray.length(); y++){
                     JSONObject kasvitPlantsDetail = kasvitPlantsArray.getJSONObject(y);
                     String kasvinNimiObjektissa = kasvitPlantsDetail.getString("kasvi");
                    if(kasvinNimiObjektissa.equals(tamanKasvinNimi)){
-                       aIstutusAika.add(kasvitPlantsDetail.get("aikaisintaan").toString());
-                       vIstutusAika.add(kasvitPlantsDetail.get("viimeistaan").toString());
-                       istutusTapa.add(kasvitPlantsDetail.get("tyyli").toString());
+                      /* String hoopo = kasvitPlantsDetail.get("aikaisintaan").toString();
+                       LocalDate hoopoToDate = LocalDate.parse(hoopo);
+                       String hoopoTwo = kasvitPlantsDetail.get("viimeistään").toString();
+                       LocalDate hoopoTwoToDate = LocalDate.parse(hoopoTwo);
+
+                        switch(KasvuAlueenNro)
+            {
+                case "Ia":
+                    aik = hoopoToDate;
+                    viim = hoopoTwoToDate;
+                    break;
+                case "Ib":
+                    aik = hoopoToDate.plusDays(3);
+                    viim = hoopoTwoToDate.plusDays(3);
+                    break;
+                case "II":
+                    aik = hoopoToDate.plusDays(7);
+                    viim = hoopoTwoToDate.plusDays(7);
+                    break;
+                case "III":
+                    aik = hoopoToDate.plusDays(11);
+                    viim = hoopoTwoToDate.plusDays(11);
+                    break;
+                case "IV":
+                    aik = hoopoToDate.plusDays(15);
+                    viim = hoopoTwoToDate.plusDays(15);
+                    break;
+                case "IV/V":
+                    aik = hoopoToDate.plusDays(18);
+                    viim = hoopoTwoToDate.plusDays(18);
+                    break;
+                case "V":
+                    aik = hoopoToDate.plusDays(21);
+                    viim = hoopoTwoToDate.plusDays(21);
+                    break;
+                case "V/VI":
+                    aik = hoopoToDate.plusDays(24);
+                    viim = hoopoTwoToDate.plusDays(24);
+                    break;
+                case "VI":
+                    aik = hoopoToDate.plusDays(27);
+                    viim = hoopoTwoToDate.plusDays(27);
+                    break;
+                case "VI/VII":
+                    aik = hoopoToDate.plusDays(30);
+                    viim = hoopoTwoToDate.plusDays(30);
+                    break;
+                case "VII":
+                    aik = hoopoToDate.plusDays(33);
+                    viim = hoopoTwoToDate.plusDays(33);
+                    break;
+                case "VIII":
+                    aik = hoopoToDate.plusDays(37);
+                    viim = hoopoTwoToDate.plusDays(37);
+                    break;
+            } */
+
+                       aIstutusAika.add(kasvitPlantsDetail.getString("aikaisintaan"));
+                       //aIstutusAika.add(aik.toString());
+                       vIstutusAika.add(kasvitPlantsDetail.getString("viimeistaan"));
+                       //vIstutusAika.add(viim.toString());
+                       istutusTapa.add(kasvitPlantsDetail.getString("tyyli"));
+                  //     Log.i("blagh", aik.toString());
+
                     }
                 }
             }
