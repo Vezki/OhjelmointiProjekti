@@ -31,10 +31,7 @@ public class CustomAdapterMain extends RecyclerView.Adapter<CustomAdapterMain.My
         this.aIstutusAika = aIstutusAika;
         this.vIstutusAika = vIstutusAika;
         this.ctx = ctx;
-
     }
-
-
 
     @NonNull
     @Override

@@ -1,23 +1,16 @@
 package com.plantsit.koskaistutan;
 
-import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Array;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -133,12 +126,11 @@ public class IstutusAjat extends AppCompatActivity {
 
                        String[] viims = formattedViim.split("/", 3);
                        String huhuh = viims[1] + "." + viims[0];
-                       
+
                        aIstutusAika.add(entiia);
                        vIstutusAika.add(huhuh);
                        istutusTapa.add(kasvitPlantsDetail.getString("tyyli"));
                   //     Log.i("blagh", aik.toString());
-
                     }
                 }
             }
