@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.sql.Array;
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class IstutusAjat extends AppCompatActivity {
@@ -63,67 +64,67 @@ public class IstutusAjat extends AppCompatActivity {
                     JSONObject kasvitPlantsDetail = kasvitPlantsArray.getJSONObject(y);
                     String kasvinNimiObjektissa = kasvitPlantsDetail.getString("kasvi");
                    if(kasvinNimiObjektissa.equals(tamanKasvinNimi)){
-                      /* String hoopo = kasvitPlantsDetail.get("aikaisintaan").toString();
-                       LocalDate hoopoToDate = LocalDate.parse(hoopo);
-                       String hoopoTwo = kasvitPlantsDetail.get("viimeistään").toString();
-                       LocalDate hoopoTwoToDate = LocalDate.parse(hoopoTwo);
-
+                       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
+                       String hoopo = kasvitPlantsDetail.get("aikaisintaan").toString();
+                       LocalDate hoopoToDate = LocalDate.parse(hoopo, formatter);
+                       String hoopoTwo = kasvitPlantsDetail.get("viimeistaan").toString();
+                       LocalDate hoopoTwoToDate = LocalDate.parse(hoopoTwo, formatter);
                         switch(KasvuAlueenNro)
-            {
-                case "Ia":
-                    aik = hoopoToDate;
-                    viim = hoopoTwoToDate;
-                    break;
-                case "Ib":
-                    aik = hoopoToDate.plusDays(3);
-                    viim = hoopoTwoToDate.plusDays(3);
-                    break;
-                case "II":
-                    aik = hoopoToDate.plusDays(7);
-                    viim = hoopoTwoToDate.plusDays(7);
-                    break;
-                case "III":
-                    aik = hoopoToDate.plusDays(11);
-                    viim = hoopoTwoToDate.plusDays(11);
-                    break;
-                case "IV":
-                    aik = hoopoToDate.plusDays(15);
-                    viim = hoopoTwoToDate.plusDays(15);
-                    break;
-                case "IV/V":
-                    aik = hoopoToDate.plusDays(18);
-                    viim = hoopoTwoToDate.plusDays(18);
-                    break;
-                case "V":
-                    aik = hoopoToDate.plusDays(21);
-                    viim = hoopoTwoToDate.plusDays(21);
-                    break;
-                case "V/VI":
-                    aik = hoopoToDate.plusDays(24);
-                    viim = hoopoTwoToDate.plusDays(24);
-                    break;
-                case "VI":
-                    aik = hoopoToDate.plusDays(27);
-                    viim = hoopoTwoToDate.plusDays(27);
-                    break;
-                case "VI/VII":
-                    aik = hoopoToDate.plusDays(30);
-                    viim = hoopoTwoToDate.plusDays(30);
-                    break;
-                case "VII":
-                    aik = hoopoToDate.plusDays(33);
-                    viim = hoopoTwoToDate.plusDays(33);
-                    break;
-                case "VIII":
-                    aik = hoopoToDate.plusDays(37);
-                    viim = hoopoTwoToDate.plusDays(37);
-                    break;
-            } */
+                        {
+                            case "Ia":
+                                aik = hoopoToDate;
+                                viim = hoopoTwoToDate;
+                                break;
+                            case "Ib":
+                                aik = hoopoToDate.plusDays(3);
+                                viim = hoopoTwoToDate.plusDays(3);
+                                break;
+                            case "II":
+                                aik = hoopoToDate.plusDays(7);
+                                viim = hoopoTwoToDate.plusDays(7);
+                                break;
+                            case "III":
+                                aik = hoopoToDate.plusDays(11);
+                                viim = hoopoTwoToDate.plusDays(11);
+                                break;
+                            case "IV":
+                                aik = hoopoToDate.plusDays(15);
+                                viim = hoopoTwoToDate.plusDays(15);
+                                break;
+                            case "IV/V":
+                                aik = hoopoToDate.plusDays(18);
+                                viim = hoopoTwoToDate.plusDays(18);
+                                break;
+                            case "V":
+                                aik = hoopoToDate.plusDays(21);
+                                viim = hoopoTwoToDate.plusDays(21);
+                                break;
+                            case "V/VI":
+                                aik = hoopoToDate.plusDays(24);
+                                viim = hoopoTwoToDate.plusDays(24);
+                                break;
+                            case "VI":
+                                aik = hoopoToDate.plusDays(27);
+                                viim = hoopoTwoToDate.plusDays(27);
+                                break;
+                            case "VI/VII":
+                                aik = hoopoToDate.plusDays(30);
+                                viim = hoopoTwoToDate.plusDays(30);
+                                break;
+                            case "VII":
+                                aik = hoopoToDate.plusDays(33);
+                                viim = hoopoTwoToDate.plusDays(33);
+                                break;
+                            case "VIII":
+                                aik = hoopoToDate.plusDays(37);
+                                viim = hoopoTwoToDate.plusDays(37);
+                                break;
+                        }
 
-                       aIstutusAika.add(kasvitPlantsDetail.getString("aikaisintaan"));
-                       //aIstutusAika.add(aik.toString());
-                       vIstutusAika.add(kasvitPlantsDetail.getString("viimeistaan"));
-                       //vIstutusAika.add(viim.toString());
+                       //aIstutusAika.add(kasvitPlantsDetail.getString("aikaisintaan"));
+                       aIstutusAika.add(aik.toString());
+                       //vIstutusAika.add(kasvitPlantsDetail.getString("viimeistaan"));
+                       vIstutusAika.add(viim.toString());
                        istutusTapa.add(kasvitPlantsDetail.getString("tyyli"));
                   //     Log.i("blagh", aik.toString());
 
