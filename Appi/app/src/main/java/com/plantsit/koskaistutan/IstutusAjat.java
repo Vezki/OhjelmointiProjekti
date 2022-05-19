@@ -1,7 +1,12 @@
 package com.plantsit.koskaistutan;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,6 +39,17 @@ public class IstutusAjat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_istutusajat);
+
+        ImageButton btnAsetukset = findViewById(R.id.btnAsetukset);
+
+
+        btnAsetukset.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(IstutusAjat.this, AlueValinta.class));
+            }
+            });
+
 
         recyclerView = findViewById(R.id.recyclerView);
 
