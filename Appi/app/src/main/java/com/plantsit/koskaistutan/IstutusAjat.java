@@ -20,6 +20,7 @@ import java.sql.Array;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 
 public class IstutusAjat extends AppCompatActivity {
@@ -121,10 +122,20 @@ public class IstutusAjat extends AppCompatActivity {
                                 break;
                         }
 
-                       //aIstutusAika.add(kasvitPlantsDetail.getString("aikaisintaan"));
-                       aIstutusAika.add(aik.toString());
-                       //vIstutusAika.add(kasvitPlantsDetail.getString("viimeistaan"));
-                       vIstutusAika.add(viim.toString());
+                       String formattedAik = aik.format(DateTimeFormatter
+                               .ofLocalizedDate(FormatStyle.SHORT));
+
+                       String[] aiks = formattedAik.split("/", 3);
+                       String entiia = aiks[1] + "." + aiks[0];
+
+                      String formattedViim = viim.format(DateTimeFormatter
+                               .ofLocalizedDate(FormatStyle.SHORT));
+
+                       String[] viims = formattedViim.split("/", 3);
+                       String huhuh = viims[1] + "." + viims[0];
+                       
+                       aIstutusAika.add(entiia);
+                       vIstutusAika.add(huhuh);
                        istutusTapa.add(kasvitPlantsDetail.getString("tyyli"));
                   //     Log.i("blagh", aik.toString());
 
