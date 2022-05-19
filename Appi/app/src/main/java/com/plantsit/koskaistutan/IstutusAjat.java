@@ -150,7 +150,7 @@ public class IstutusAjat extends AppCompatActivity {
                        DateTimeFormatter dtfAik = DateTimeFormatter.ofPattern("d.M"); //Jos haluat ajan esim 01.01, niin dd.MM, jos ilman nollia esim 1.1 niin d.M. Vuoden kanssa formaatti on d.M.yyyy
                        String strFAik = dtfAik.format(ldAik);
 
-                       String strVim = hoopoToDate.toString();
+                       String strVim = hoopoTwoToDate.toString();
                        LocalDate ldVim = LocalDate.parse(strVim);
                        DateTimeFormatter dtfVim = DateTimeFormatter.ofPattern("d.M"); //Jos haluat ajan esim 01.01, niin dd.MM, jos ilman nollia esim 1.1 niin d.M. Vuoden kanssa formaatti on d.M.yyyy
                        String strFVim = dtfVim.format(ldVim);
