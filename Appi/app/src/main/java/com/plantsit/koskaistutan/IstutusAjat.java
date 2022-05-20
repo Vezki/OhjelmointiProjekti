@@ -131,7 +131,7 @@ public class IstutusAjat extends AppCompatActivity {
                                 viim = hoopoTwoToDate.plusDays(37);
                                 break;
                         }
-                        /*
+
                        String formattedAik = aik.format(DateTimeFormatter
                                .ofLocalizedDate(FormatStyle.SHORT));
 
@@ -142,9 +142,9 @@ public class IstutusAjat extends AppCompatActivity {
                                .ofLocalizedDate(FormatStyle.SHORT));
 
                        String[] viims = formattedViim.split("/", 3);
-                       String huhuh = viims[1] + "." + viims[0];*/
+                       String huhuh = viims[1] + "." + viims[0];
 
-
+/*
                        String strAik = hoopoToDate.toString();
                        LocalDate ldAik = LocalDate.parse(strAik);
                        DateTimeFormatter dtfAik = DateTimeFormatter.ofPattern("d.M"); //Jos haluat ajan esim 01.01, niin dd.MM, jos ilman nollia esim 1.1 niin d.M. Vuoden kanssa formaatti on d.M.yyyy
@@ -153,10 +153,10 @@ public class IstutusAjat extends AppCompatActivity {
                        String strVim = hoopoToDate.toString();
                        LocalDate ldVim = LocalDate.parse(strVim);
                        DateTimeFormatter dtfVim = DateTimeFormatter.ofPattern("d.M"); //Jos haluat ajan esim 01.01, niin dd.MM, jos ilman nollia esim 1.1 niin d.M. Vuoden kanssa formaatti on d.M.yyyy
-                       String strFVim = dtfVim.format(ldVim);
+                       String strFVim = dtfVim.format(ldVim);*/
 
-                       aIstutusAika.add(strFAik);
-                       vIstutusAika.add(strFVim);
+                       aIstutusAika.add(entiia);
+                       vIstutusAika.add(huhuh);
                        istutusTapa.add(kasvitPlantsDetail.getString("tyyli"));
                   //     Log.i("blagh", aik.toString());
                     }
